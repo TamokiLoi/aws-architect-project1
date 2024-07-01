@@ -1,0 +1,98 @@
+tamokinguyen@Tamokis-MacBook-Pro ~ % cd Desktop/learn/aws/architect 
+tamokinguyen@Tamokis-MacBook-Pro architect % ssh -i "ec2-connect.pem" ec2-user@ec2-34-227-176-32.compute-1.amazonaws.com
+Last login: Mon Jul  1 08:10:52 2024 from 118.69.108.246
+   ,     #_
+   ~\_  ####_        Amazon Linux 2
+  ~~  \_#####\
+  ~~     \###|       AL2 End of Life is 2025-06-30.
+  ~~       \#/ ___
+   ~~       V~' '->
+    ~~~         /    A newer version of Amazon Linux is available!
+      ~~._.   _/
+         _/ _/       Amazon Linux 2023, GA and supported until 2028-03-15.
+       _/m/'           https://aws.amazon.com/linux/amazon-linux-2023/
+
+-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+[ec2-user@ip-10-1-11-199 ~]$ mysql -h database-1.cdeq0mb13lxt.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 67
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> CREATE TABLE students
+    -> (
+    ->     student_id        INT AUTO_INCREMENT PRIMARY KEY,
+    ->     full_name         VARCHAR(100)        NOT NULL,
+    ->     email             VARCHAR(100) UNIQUE NOT NULL,
+    ->     major             VARCHAR(50),
+    ->     start_year        INT,
+    ->     enrollment_status ENUM('Enrolled', 'Graduated', 'On leave', 'Withdrawn') DEFAULT 'Enrolled'
+    -> );
+ERROR 1046 (3D000): No database selected
+MySQL [(none)]> CREATE TABLE students
+    -> (
+    ->     student_id        INT AUTO_INCREMENT PRIMARY KEY,
+    ->     full_name         VARCHAR(100)        NOT NULL,
+    ->     email             VARCHAR(100) UNIQUE NOT NULL,
+    ->     major             VARCHAR(50),
+    ->     start_year        INT,
+    ->     enrollment_status ENUM('Enrolled', 'Graduated', 'On leave', 'Withdrawn') DEFAULT 'Enrolled'
+    -> );
+ERROR 1046 (3D000): No database selected
+MySQL [(none)]> CREATE TABLE sudentts ()
+    -> 
+    -> asdasda
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+
+asdasda' at line 1
+MySQL [(none)]> CREATE DATABASE udacity;
+Query OK, 1 row affected (0.03 sec)
+
+MySQL [(none)]> CREATE TABLE students
+    -> (
+    ->     student_id        INT AUTO_INCREMENT PRIMARY KEY,
+    ->     full_name         VARCHAR(100)        NOT NULL,
+    ->     email             VARCHAR(100) UNIQUE NOT NULL,
+    ->     major             VARCHAR(50),
+    ->     start_year        INT,
+    ->     enrollment_status ENUM('Enrolled', 'Graduated', 'On leave', 'Withdrawn') DEFAULT 'Enrolled'
+    -> );
+ERROR 1046 (3D000): No database selected
+MySQL [(none)]> USEudacity   
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USEudacity' at line 1
+MySQL [(none)]> USE udacity
+Database changed
+MySQL [udacity]> CREATE TABLE students (
+    ->     student_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     first_name VARCHAR(50) NOT NULL,
+    ->     last_name VARCHAR(50) NOT NULL,
+    ->     email VARCHAR(100) NOT NULL,
+    ->     date_of_birth DATE
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+MySQL [udacity]> INSERT INTO students (first_name, last_name, email, date_of_birth) VALUES
+    -> ('John', 'Doe', 'john.doe@example.com', '1990-01-01'),
+    -> ('Jane', 'Smith', 'jane.smith@example.com', '1992-02-02');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MySQL [udacity]> SHOW VARIABLES LIKE 'log_output';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| log_output    | TABLE |
++---------------+-------+
+1 row in set (0.01 sec)
+
+MySQL [udacity]> sudo tail -f /var/log/mysql/mysql.log
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sudo tail -f /var/log/mysql/mysql.log' at line 1
+MySQL [udacity]> clear;
+MySQL [udacity]> 

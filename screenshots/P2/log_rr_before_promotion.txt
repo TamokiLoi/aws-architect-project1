@@ -1,0 +1,69 @@
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 8.8 M
+Installed size: 49 M
+Downloading packages:
+mariadb-5.5.68-1.amzn2.0.1.x86_64.rpm                      | 8.8 MB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 1:mariadb-5.5.68-1.amzn2.0.1.x86_64                          1/1 
+  Verifying  : 1:mariadb-5.5.68-1.amzn2.0.1.x86_64                          1/1 
+
+Installed:
+  mariadb.x86_64 1:5.5.68-1.amzn2.0.1                                           
+
+Complete!
+[ec2-user@ip-10-2-11-41 ~]$ mysql --version
+mysql  Ver 15.1 Distrib 5.5.68-MariaDB, for Linux (x86_64) using readline 5.1
+[ec2-user@ip-10-2-11-41 ~]$ clear
+
+[ec2-user@ip-10-2-11-41 ~]$ mysql -h database-replica.c23050ac45pw.us-west-2.rds.amazonaws.com -P 3306 -u admin -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 42
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.01 sec)
+
+MySQL [(none)]> USE DATABASE;
+ERROR 1049 (42000): Unknown database 'DATABASE'
+MySQL [(none)]> USE udacity;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [udacity]> SELECT * FROM student;
+ERROR 1146 (42S02): Table 'udacity.student' doesn't exist
+MySQL [udacity]> SELECT * FROM students;
++------------+------------+-----------+------------------------+---------------+
+| student_id | first_name | last_name | email                  | date_of_birth |
++------------+------------+-----------+------------------------+---------------+
+|          1 | John       | Doe       | john.doe@example.com   | 1990-01-01    |
+|          2 | Jane       | Smith     | jane.smith@example.com | 1992-02-02    |
++------------+------------+-----------+------------------------+---------------+
+2 rows in set (0.00 sec)
+
+MySQL [udacity]> INSERT INTO students (first_name, last_name, email, date_of_birth) VALUES
+    -> ('John', 'Doe', 'john.doe@example.com', '1990-01-01'),
+    -> ('Jane', 'Smith', 'jane.smith@example.com', '1992-02-02');
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+MySQL [udacity]> 
